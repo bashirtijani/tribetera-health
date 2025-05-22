@@ -15,8 +15,16 @@
     header {
       background: #004aad;
       color: white;
-      padding: 2rem 1rem;
+      padding: 1rem 1rem; /* Adjusted padding to accommodate nav */
       text-align: center;
+      position: relative; /* Needed for absolute positioning of nav */
+    }
+    .header-content {
+      max-width: 960px;
+      margin: auto;
+      display: flex; /* Use flexbox for logo/title and nav */
+      flex-direction: column; /* Stack vertically by default */
+      align-items: center; /* Center items horizontally */
     }
     header img {
       max-width: 160px;
@@ -26,6 +34,55 @@
       margin: 0;
       font-size: 2rem;
     }
+    header p {
+      margin-top: 0.5rem;
+      margin-bottom: 0;
+    }
+    .top-nav {
+      position: absolute; /* Position relative to header */
+      top: 1rem; /* Adjust as needed */
+      right: 1rem; /* Adjust as needed */
+      display: flex; /* Arrange links horizontally */
+      gap: 15px; /* Space between links */
+      font-size: 0.9rem; /* Smaller font for top links */
+    }
+    .top-nav a {
+      color: white;
+      text-decoration: none;
+      padding: 5px 10px;
+      border: 1px solid rgba(255, 255, 255, 0.5); /* Subtle border */
+      border-radius: 5px;
+      transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+    .top-nav a:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      border-color: white;
+    }
+
+    /* Media query for larger screens to align header content horizontally */
+    @media (min-width: 768px) {
+      .header-content {
+        flex-direction: row; /* Align horizontally */
+        justify-content: space-between; /* Space out logo/title and nav */
+        align-items: flex-start; /* Align logo/title to the top */
+        text-align: left;
+      }
+      header img {
+        margin-bottom: 0;
+        margin-right: 1rem; /* Space between logo and title */
+      }
+      .site-title-tagline {
+        flex-grow: 1; /* Allow title/tagline to take available space */
+        text-align: left;
+      }
+      .top-nav {
+        position: static; /* Reset position for larger screens if desired, or keep absolute */
+        /* For this specific layout, keeping it absolute works well to stay top-right */
+        margin-left: auto; /* Push nav to the right */
+        margin-top: 0;
+      }
+    }
+
     section {
       padding: 2rem 1rem;
       max-width: 960px;
@@ -65,9 +122,17 @@
 </head>
 <body>
   <header>
-    <img src="logo.png" alt="Tribetera Health Logo" />
-    <h1>Tribetera Health</h1>
-    <p>Empowering recovery, health, and independence with AI-driven support.</p>
+    <div class="header-content">
+      <img src="logo.png" alt="Tribetera Health Logo" />
+      <div class="site-title-tagline">
+        <h1>Tribetera Health</h1>
+        <p>Empowering recovery, health, and independence with AI-driven support.</p>
+      </div>
+      <nav class="top-nav">
+        <a href="https://forms.example.com/intake" target="_blank">Complete our Intake Form / Request Service</a>
+        <a href="mailto:clientcare@tribetera.ca">Contact Us: clientcare@tribetera.ca</a>
+      </nav>
+    </div>
   </header>
 
   <section>
@@ -76,7 +141,7 @@
   </section>
 
   <section>
-    <h2>Key Features</h2>
+    <h2>Our Services</h2>
     <div class="features">
       <div class="feature">
         <h3>Daily Wellness Check-ins</h3>
@@ -93,6 +158,14 @@
       <div class="feature">
         <h3>CaregiveratWork</h3>
         <p>Providing essential resources and support to professional caregivers, enhancing their effectiveness and well-being.</p>
+      </div>
+      <div class="feature">
+        <h3>End of Life/Palliative Care</h3>
+        <p>Compassionate support and resources for individuals and families navigating end-of-life and palliative care journeys.</p>
+      </div>
+      <div class="feature">
+        <h3>Hire a Health Worker</h3>
+        <p>Connect with qualified and compassionate health professionals to meet your specific care needs at home.</p>
       </div>
     </div>
   </section>
